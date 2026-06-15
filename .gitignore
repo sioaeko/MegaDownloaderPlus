@@ -1,0 +1,41 @@
+bin/
+obj/
+
+# IDE / local workspace state
+.vs/
+.idea/
+.vscode/
+.claude/
+.codex/
+*.user
+*.suo
+*.tmp
+*.log
+
+# Build, packaging, and verification output
+artifacts/
+TestResults/
+*.nupkg
+*.snupkg
+
+# Local scratch probes
+probe.cs
+test_sdk.cs
+
+# Internal handoff / analysis notes
+docs/codex-handoff-*.md
+docs/original-analysis.md
+docs/implementation-log-*.md
+
+# Secrets / environment
+.env
+.env.*
+*.pfx
+*.p12
+*.pem
+*.key
+
+# OS noise
+.DS_Store
+Thumbs.db
+desktop.ini

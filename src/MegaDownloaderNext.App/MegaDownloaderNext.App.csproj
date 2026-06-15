@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\MegaDownloaderNext.Core\MegaDownloaderNext.Core.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyName>MegaDownloaderPlus</AssemblyName>
+    <ApplicationIcon>Assets\AppIcon.ico</ApplicationIcon>
+    <Company>MegaDownloader+</Company>
+    <Product>MegaDownloader+</Product>
+    <Title>MegaDownloader+</Title>
+    <AssemblyTitle>MegaDownloader+</AssemblyTitle>
+    <FileDescription>MegaDownloader+</FileDescription>
+    <Description>MEGA download manager</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\AppIcon.ico" />
+    <Resource Include="Assets\AppIcon.ico" />
+    <Resource Include="Assets\AppIcon.png" />
+    <Resource Include="Assets\AppIconSidebar.png" />
+  </ItemGroup>
+
+</Project>
