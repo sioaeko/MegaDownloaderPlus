@@ -1125,6 +1125,48 @@ public partial class MainWindow : Window
         SaveQueue();
     }
 
+    private void ClearAll_Click(object sender, RoutedEventArgs e)
+    {
+        if (_isRunning)
+        {
+            ShowStatus("다운로드 중에는 대기열을 비울 수 없습니다. 먼저 일시 정지해주세요.");
+            return;
+        }
+
+        var itemCount = _model.Items.Count;
+        if (itemCount == 0)
+        {
+            ShowStatus("비울 대기열이 없습니다.");
+            return;
+        }
+
+        var result = System.Windows.MessageBox.Show(
+            this,
+            $"대기열의 {itemCount:N0}개 항목을 모두 삭제할까요?\n\n다운로드된 파일은 삭제되지 않습니다.",
+            "대기열 비우기",
+            MessageBoxButton.YesNo,
+            MessageBoxImage.Warning,
+            MessageBoxResult.No);
+
+        if (result != MessageBoxResult.Yes)
+        {
+            return;
+        }
+
+        foreach (var item in _model.Items)
+        {
+            item.PropertyChanged -= DownloadItemModel_PropertyChanged;
+        }
+
+        _model.SelectedItem = null;
+        _model.Items.Clear();
+        _queue.Clear();
+        _model.RefreshSummary();
+        RefreshQueueFilter();
+        SaveQueue();
+        ShowStatus("대기열을 비웠습니다.");
+    }
+
     private async void StartDownloads_Click(object sender, RoutedEventArgs e)
     {
         await StartQueueAsync();
@@ -2085,6 +2127,7 @@ public partial class MainWindow : Window
         StartButton.IsEnabled = !isRunning;
         RetryErrorsButton.IsEnabled = !isRunning;
         RetrySelectedButton.IsEnabled = !isRunning;
+        ClearAllButton.IsEnabled = !isRunning;
         StopButton.IsEnabled = isRunning;
     }
 }

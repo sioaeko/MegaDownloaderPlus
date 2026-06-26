@@ -256,8 +256,16 @@
                         <Button ToolTip="완료 정리"
                                 Click="ClearCompleted_Click"
                                 Width="40" Height="36"
+                                Margin="0,0,8,0"
                                 Style="{StaticResource SubtleButtonStyle}">
                             <TextBlock Text="&#xE894;" FontFamily="Segoe MDL2 Assets" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Button>
+                        <Button x:Name="ClearAllButton"
+                                ToolTip="대기열 비우기"
+                                Click="ClearAll_Click"
+                                Width="40" Height="36"
+                                Style="{StaticResource SubtleButtonStyle}">
+                            <TextBlock Text="&#xE74D;" FontFamily="Segoe MDL2 Assets" HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Button>
                     </StackPanel>
                 </Grid>

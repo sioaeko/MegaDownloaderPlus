@@ -62,6 +62,8 @@ Equal(DownloadState.Queued, queued.State, "queued state");
 Equal(true, queue.ContainsEquivalent(many[0], @"C:\Downloads\"), "duplicate link same target");
 Equal(false, queue.ContainsEquivalent(many[1], @"C:\Downloads"), "different link not duplicate");
 Equal(false, queue.ContainsEquivalent(many[0], @"C:\OtherDownloads"), "same link different target allowed");
+queue.Clear();
+Equal(0, queue.Items.Count, "clear queue count");
 
 var folderLink = new MegaLink(MegaLinkKind.Folder, "folder", "folderKey", "https://mega.nz/folder/folder#folderKey");
 var folderNode = new MegaFileNodeSnapshot("nodeA", "child.bin", 123, "folder", BytesFrom(120, 32));

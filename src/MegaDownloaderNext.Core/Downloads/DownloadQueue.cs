@@ -66,6 +66,17 @@ public sealed class DownloadQueue
         }
     }
 
+    public void Clear()
+    {
+        if (_items.Count == 0)
+        {
+            return;
+        }
+
+        _items.Clear();
+        Changed?.Invoke(this, EventArgs.Empty);
+    }
+
     public void ClearCompleted()
     {
         _items.RemoveAll(item => item.State is DownloadState.Completed or DownloadState.Canceled or DownloadState.Skipped);
